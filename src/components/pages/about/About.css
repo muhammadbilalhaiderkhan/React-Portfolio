@@ -1,0 +1,106 @@
+.skills-loop-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.skills-loop {
+  display: flex;
+  gap: 1rem;
+  animation: scroll 40s linear infinite;
+  width: fit-content;
+}
+
+.skills-loop-container:hover .skills-loop {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.skill-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: white/10;
+  border: 1px solid white/20;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.skill-badge:hover {
+  background: white/20;
+  border-color: white/40;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.skill-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--skill-color);
+  box-shadow: 0 0 6px var(--skill-color);
+}
+
+.skill-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 5rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+@media (max-width: 768px) {
+  .skills-loop {
+    gap: 0.75rem;
+    animation: scroll 30s linear infinite;
+  }
+
+  .skill-badge {
+    padding: 0.65rem 1rem;
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+  }
+
+  .fade-left,
+  .fade-right {
+    width: 3rem;
+  }
+}
