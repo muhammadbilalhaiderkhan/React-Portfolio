@@ -1,6 +1,9 @@
+// src/components/pages/contact/Contact.jsx
 import React, { useState } from "react";
 import { Mail, User, MessageSquare, Send, CheckCircle } from "lucide-react";
 import BlurText from "@/components/UI/BlurText";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -8,9 +11,10 @@ function Contact() {
     email: "",
     message: "",
   });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Replace with your actual PHP endpoint:
+  const PHP_ENDPOINT = "https://bilalhaiderwebdev.vercel.app/send-mail.php";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,40 +26,51 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
-    setIsSubmitting(true);
+    const { name, email, message } = formData;
 
-    if (!formData.name || !formData.email || !formData.message) {
-      setError("Please fill in all fields.");
-      setIsSubmitting(false);
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields.");
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
-      const res = await fetch("/api/send-email", {
+      // Use FormData so PHP can read via $_POST
+      const body = new FormData();
+      body.append("name", name);
+      body.append("email", email);
+      body.append("message", message);
+
+      const res = await fetch(PHP_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body, // browser sets the correct headers for FormData
       });
 
-      const result = await res.json();
+      // try parse JSON
+      const result = await res.json().catch(() => null);
 
-      if (result.status === "success") {
-        setSuccess(result.message);
+      if (res.ok && result && result.status === "success") {
         setFormData({ name: "", email: "", message: "" });
+        toast.success(result.message || "Message sent successfully!");
       } else {
-        setError(result.message);
+        // either server returned error or non-json
+        const msg =
+          (result && result.message) ||
+          "Something went wrong. Please try again later.";
+        toast.error(msg);
       }
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      console.error("Request error:", err);
+      toast.error("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
   };
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4 py-16">
+      <ToastContainer position="top-right" autoClose={4000} />
       <div className="max-w-2xl w-full">
         {/* Header */}
         <div className="text-center mb-12">
@@ -65,7 +80,6 @@ function Contact() {
           <h2 className="flex justify-center text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
             <BlurText text="Get In Touch" animateBy="words" />
           </h2>
-          {/* Decorative Dash */}
           <div className="w-16 h-1 bg-gradient-to-r from-white to-gray-500 mx-auto mb-4 rounded"></div>
           <p className="text-gray-400 text-lg">
             Have a question or want to work together? Drop me a message.
@@ -142,26 +156,6 @@ function Contact() {
               ></textarea>
             </div>
           </div>
-
-          {/* Error */}
-          {error && (
-            <div className="p-4 rounded-lg bg-white/5 border border-white/10">
-              <p className="text-red-400 text-sm flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                {error}
-              </p>
-            </div>
-          )}
-
-          {/* Success */}
-          {success && (
-            <div className="p-4 rounded-lg bg-white/5 border border-white/10 animate-in fade-in duration-500">
-              <p className="text-green-400 text-sm flex items-center gap-2">
-                <CheckCircle className="w-5 h-5" />
-                {success}
-              </p>
-            </div>
-          )}
 
           {/* Submit Button */}
           <button

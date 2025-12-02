@@ -179,7 +179,7 @@ function Services() {
         <div className="text-center">
           <p className="text-gray-400 mb-6">Ready to get started?</p>
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors group"
           >
             Schedule a Consultation

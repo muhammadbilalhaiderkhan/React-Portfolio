@@ -36,19 +36,19 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/#about" className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                <a href="/about" className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 group">
                   About
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
               <li>
-                <a href="/#projects" className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                <a href="/projects" className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 group">
                   Projects
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
               <li>
-                <a href="/#services" className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                <a href="/services" className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 group">
                   Services
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>

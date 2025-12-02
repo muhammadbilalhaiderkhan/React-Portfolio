@@ -277,13 +277,13 @@ function Projects() {
         </p>
         <div className="flex flex-col md:flex-row justify-center gap-6">
           <a
-            href="/#contact"
+            href="/contact"
             className="px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors"
           >
             Hire Me
           </a>
           <a
-            href="/#services"
+            href="/services"
             className="px-8 py-3 bg-transparent border border-white/20 text-white font-semibold rounded-lg hover:bg-white hover:text-black transition-all"
           >
             View Services

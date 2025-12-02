@@ -13,11 +13,11 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: 'home' },
+    { name: 'About', href: 'about' },
+    { name: 'Services', href: 'services' },
+    { name: 'Projects', href: 'projects' },
+    { name: 'Contact', href: 'contact' },
   ];
 
   return (
@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center h-20 px-4 sm:px-6 lg:px-10">
         {/* ✅ Logo (Left Corner) */}
         <a
-          href="#home"
+          href="home"
           className="text-2xl font-bold tracking-wide text-[#F4F4F4] hover:text-[#1D546C] transition-colors duration-300"
         >
           <img

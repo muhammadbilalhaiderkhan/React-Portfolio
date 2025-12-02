@@ -103,7 +103,7 @@ export default function Testimonials() {
         </p>
         <div className="flex flex-col md:flex-row justify-center gap-6">
           <a
-            href="/#contact"
+            href="/contact"
             className="px-8 py-3 bg-white text-black font-bold rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
           >
             Hire Me

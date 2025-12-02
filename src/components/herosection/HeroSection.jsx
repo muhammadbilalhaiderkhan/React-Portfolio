@@ -27,7 +27,7 @@ function App() {
 
           <div className="flex gap-5 flex-wrap justify-center">
             <a
-              href="/#projects"
+              href="/projects"
               className="group relative px-8 py-4 bg-white text-gray-900 rounded-lg font-medium tracking-wide overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5"
             >
               <span className="relative z-10">Explore Projects</span>
@@ -35,7 +35,7 @@ function App() {
             </a>
 
             <a
-              href="/#contact"
+              href="/contact"
               className="group relative px-8 py-4 bg-transparent text-white rounded-lg font-medium tracking-wide border-2 border-white/30 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-0.5"
             >
               <span className="relative z-10">Let's Connect</span>
